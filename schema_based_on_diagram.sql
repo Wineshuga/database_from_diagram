@@ -40,3 +40,15 @@ CREATE TABLE invoice_items (
   FOREIGN KEY (treatment_id)
   REFERENCES treatments(id)
 )
+
+CREATE TABLE invoices (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  total_amount decimal(8, 2),
+  generated_at TIMESTAMP,
+  payed_at TIMESTAMP,
+  medical_history_id INT
+  PRIMARY KEY (id)
+  CONSTRAINT
+  fk_medical_history
+  REFERENCES medical_histories(id)
+)
