@@ -20,3 +20,23 @@ CREATE TABLE treatments (
   name VARCHAR(255),
   PRIMARY KEY (id)
 )
+
+
+CREATE TABLE invoice_items (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  unit_price decimal(8, 2),
+  quantity INT,
+  total_price decimal(8, 2),
+  invoice_id INT,
+  treatment_id INT,
+  name VARCHAR(255),
+  PRIMARY KEY (id)
+  CONSTRAINT 
+  fk_invoice
+  FOREIGN KEY (invoice_id)
+  REFERENCES invoices(id)
+  CONSTRAINT 
+  fk_treatment
+  FOREIGN KEY (treatment_id)
+  REFERENCES treatments(id)
+)
