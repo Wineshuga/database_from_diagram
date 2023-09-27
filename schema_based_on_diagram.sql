@@ -43,6 +43,16 @@ CREATE TABLE
         medical_history_id INT PRIMARY KEY (id) CONSTRAINT fk_medical_history REFERENCES medical_histories(id)
     )
 
+-- join table
+
+CREATE TABLE
+    admission (
+        medical_history_id INT,
+        treatment_id INT
+    )
+
+-- create indexes
+
 CREATE INDEX patient_id_idx ON medical_histories(patient_id ASC);
 
 CREATE INDEX invoice_id_idx ON invoice_items(invoice_id ASC);
